@@ -22,6 +22,8 @@ services:
     build:
       context: .
       dockerfile: app/Dockerfile
+    environment:
+      - FLASK_SECRET_KEY=mi_clave_segura
     volumes:
       - ./app:/app
     depends_on:

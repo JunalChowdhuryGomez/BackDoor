@@ -2,9 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from database import get_questions_from_db
 from question import Question
 from quiz import Quiz
+import os
 
 app = Flask(__name__)
-app.secret_key = "junalchowdhurygomez_BackDoor"
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_insecure_dev_key")
+
 
 #  funcion para guardar el estado del Quiz
 def save_quiz(quiz):
