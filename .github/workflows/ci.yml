@@ -28,6 +28,7 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
-            -Dsonar.projectKey=trivia-game-python
+            -Dsonar.projectKey=junalchowdhurygomez_BackDoor
             -Dsonar.sources=app
             -Dsonar.organization=junalchowdhurygomez
+            -Dsonar.python.version=3.11
