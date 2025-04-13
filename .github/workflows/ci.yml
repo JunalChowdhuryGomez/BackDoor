@@ -33,4 +33,4 @@ jobs:
             -Dsonar.sources=app
             -Dsonar.python.version=3.11
             -Dsonar.verbose=true
-            
+            -X
