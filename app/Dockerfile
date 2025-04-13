@@ -15,4 +15,4 @@ COPY app/ .
 CMD ["python", "app.py"]
 
 # para ejecutar la interfaz enterminal
-# CMD ["python", "main.py"]
+#CMD ["python", "main.py"]

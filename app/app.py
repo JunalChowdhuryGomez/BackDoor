@@ -4,6 +4,7 @@ from question import Question
 from quiz import Quiz
 
 app = Flask(__name__)
+app.secret_key = "junalchowdhurygomez_BackDoor"
 
 #  funcion para guardar el estado del Quiz
 def save_quiz(quiz):
