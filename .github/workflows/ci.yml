@@ -31,5 +31,6 @@ jobs:
             -X
             -Dsonar.projectKey=junalchowdhurygomez_BackDoor
             -Dsonar.organization=junalchowdhurygomez
-            -Dsonar.sources=.
+            -Dsonar.sources=app
+            -Dsonar.verbose=true
             -Dsonar.python.version=3.11
