@@ -30,3 +30,4 @@ jobs:
           args: >
             -Dsonar.projectKey=trivia-game-python
             -Dsonar.sources=app
+            -Dsonar.organization=junalchowdhurygomez
