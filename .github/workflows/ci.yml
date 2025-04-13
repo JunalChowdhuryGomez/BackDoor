@@ -28,9 +28,9 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
+            -X
             -Dsonar.projectKey=junalchowdhurygomez_BackDoor
             -Dsonar.organization=junalchowdhurygomez
             -Dsonar.sources=app
             -Dsonar.python.version=3.11
             -Dsonar.verbose=true
-            -X
