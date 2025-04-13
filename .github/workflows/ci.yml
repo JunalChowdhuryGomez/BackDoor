@@ -33,4 +33,3 @@ jobs:
             -Dsonar.organization=junalchowdhurygomez
             -Dsonar.sources=.
             -Dsonar.python.version=3.11
-            -Dsonar.verbose=true
