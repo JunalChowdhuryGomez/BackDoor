@@ -29,6 +29,6 @@ jobs:
         with:
           args: >
             -Dsonar.projectKey=junalchowdhurygomez_BackDoor
-            -Dsonar.sources=app
-            -Dsonar.organization=junalchowdhurygomez
-            -Dsonar.python.version=3.11
+            -Dsonar.sources=.
+ #           -Dsonar.organization=junalchowdhurygomez
+ #           -Dsonar.python.version=3.11
