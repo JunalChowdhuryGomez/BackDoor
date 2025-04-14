@@ -5,7 +5,7 @@ from quiz import Quiz
 import os
 
 from dotenv import load_dotenv
-load_dotenv(".env")
+
 
 app = Flask(__name__)
 secret_key = os.environ.get("FLASK_SECRET_KEY")
@@ -88,6 +88,7 @@ def result():
     # retorna resultados, respuestas correctas e incorrectas
     return render_template('result.html', correct=quiz.correct_answers, incorrect=quiz.incorrect_answers)
 
+load_dotenv()
+#  inicia la app 
 if __name__ == '__main__':
-    print(os.environ.get("FLASK_HOST"))
     app.run(host='0.0.0.0', port=5000)
