@@ -1,7 +1,7 @@
 import pytest
 # from app import app
 
-#from app.app import app as flask_app
+from app.app import app as flask_app
 #app/tests/integration/test_flask_app.py
 
 from flask.testing import FlaskClient
