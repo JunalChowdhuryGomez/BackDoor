@@ -2,7 +2,7 @@ import pytest
 from flask import Flask, render_template, request, redirect, url_for, session
 
 from app import app
-
+from app import save_quiz, restore_quiz
 from quiz import Quiz
 from database import get_questions_from_db
 
