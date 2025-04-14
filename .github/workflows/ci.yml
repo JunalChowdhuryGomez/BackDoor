@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,12 +27,17 @@ jobs:
         uses: sonarsource/sonarqube-scan-action@v2.3.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://sonarcloud.io
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL || 'https://sonarcloud.io' }}
         with:
           args: >
-            -X
             -Dsonar.projectKey=junalchowdhurygomez_BackDoor
             -Dsonar.organization=junalchowdhurygomez
             -Dsonar.sources=app
-            -Dsonar.verbose=true
             -Dsonar.python.version=3.11
+            -Dsonar.python.coverage.reportPaths=app/coverage.xml
+            -Dsonar.coverage.exclusions=app/tests/**,**/__init__.py
+            -Dsonar.test.exclusions=app/tests/**
+            -Dsonar.python.xunit.reportPath=app/tests/report.xml
+            -Dsonar.verbose=true
+            -Dsonar.scm.provider=git
+            -Dsonar.cpd.exclusions=app/tests/**
