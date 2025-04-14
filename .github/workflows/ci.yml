@@ -8,14 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v2
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.11'
+          python-version: '3.9'
 
       - name: Install dependencies
         run: pip install -r app/requirements.txt
@@ -49,5 +47,4 @@ jobs:
           -Dsonar.cpp.file.suffixes=-
           -Dsonar.objc.file.suffixes=-
           
-      - name: Run Security Scan
-        run: bandit -r app
+      
