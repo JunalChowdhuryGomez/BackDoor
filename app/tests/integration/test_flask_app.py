@@ -2,7 +2,7 @@ import pytest
 from app import app, save_quiz, restore_quiz
 from quiz import Quiz
 from question import Question
-
+import unittest
 @pytest.fixture
 def client():
     app.config['TESTING'] = True
@@ -11,11 +11,15 @@ def client():
             session.clear()
         yield client
 
-def test_index_get(client):
-    """Prueba que la ruta principal devuelva el formulario de dificultad"""
-    response = client.get('/')
-    assert response.status_code == 200
-    assert b"Selecciona la dificultad" in response.data
+class FlaskAppTestCase(unittest.TestCase):
+    def setUp(self):
+        app.config["TESTING"] = True
+        self.client = app.test_client()
+
+    def test_index_get(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Selecciona la dificultad", response.data)
 
 def test_index_post(client, monkeypatch):
     """Prueba el envío del formulario de dificultad"""
