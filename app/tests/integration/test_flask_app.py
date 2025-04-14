@@ -1,19 +1,15 @@
 import pytest
-# from app import app
 
-#from app.app import app as flask_app
-#app/tests/integration/test_flask_app.py
+from app import app
 
-
-"""
 @pytest.fixture
 def client():
-    flask_app.config['TESTING'] = True
-    with flask_app.test_client() as client:
-        with flask_app.app_context():
-            yield client
-"""
+    app.config['TESTING'] = True
+    app.secret_key = 'dev'  # Necesario para usar sesiones en tests
 
+    with app.test_client() as client:
+        with app.app_context():
+            yield client
 
 def test_index_get(client):
     response = client.get('/')
