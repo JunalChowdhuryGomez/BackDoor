@@ -12,11 +12,11 @@ def get_questions_from_db(difficulty=None):
     
     # connexion a la bd "trivia_db"  de postgres
     connection = psycopg2.connect(
-        dbname=os.getenv("DB_NAME", "trivia_db"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", ""),
-        host=os.getenv("DB_HOST", "localhost"),
-        port=os.getenv("DB_PORT", "5432")
+        dbname="trivia_db",
+        user="postgres",
+        password="postgres",
+        host="db",
+        port="5432"
     )
     cursor = connection.cursor()
     # hacemos la consulta 
