@@ -29,17 +29,17 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
-        with:
-          projectBaseDir: app
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL || 'https://sonarcloud.io' }}
-        args: >
-          -Dsonar.projectKey=JunalChowdhuryGomez_BackDoor
-          -Dsonar.organization=junalchowdhurygomez
-          -Dsonar.sources=app
-          -Dsonar.c.file.suffixes=-
-          -Dsonar.cpp.file.suffixes=-
-          -Dsonar.objc.file.suffixes=-
+        
+        with:
+          projectBaseDir: app
+          args: >
+            -Dsonar.projectKey=JunalChowdhuryGomez_BackDoor
+            -Dsonar.organization=junalchowdhurygomez
+            -Dsonar.sources=app
+            -Dsonar.c.file.suffixes=-
+            -Dsonar.cpp.file.suffixes=-
+            -Dsonar.objc.file.suffixes=-
           
       
