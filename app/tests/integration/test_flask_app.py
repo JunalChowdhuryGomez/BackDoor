@@ -1,5 +1,5 @@
 import pytest
-from app import app, save_quiz, restore_quiz
+from app import app, save_quiz
 from quiz import Quiz
 from question import Question
 import unittest
