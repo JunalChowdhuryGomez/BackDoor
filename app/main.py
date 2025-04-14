@@ -5,7 +5,6 @@ from database import get_questions_from_db
 def seleccionar_dificultad():
     print("Bienvenido al Quiz de Historia del Peru")
     # solicita el nivel de dificultad
-    #print("=========================================")
     print("Elige la dificultad del Quiz")
     print("1. Facil")
     print("2. Intermedio")
@@ -48,12 +47,10 @@ def obtener_respuesta_valida(num_opciones):
 
 def mostrar_resultados(quiz):
     # muestra el resultado final
-    print()
-    #print("=========================================") 
-    print("============ Juego terminado ============")
+    print("\n============ Juego terminado ============\n")
     print(f"respuestas Correctas: {quiz.correct_answers}")
     print(f"respuestas Incorrectas: {quiz.incorrect_answers}")
-    #print("=========================================")
+    
 
 
 def run_quiz():
