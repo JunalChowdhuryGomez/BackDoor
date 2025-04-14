@@ -23,8 +23,14 @@ jobs:
       - name: Run tests
         run: pytest app/tests
 
+      - name: Set up Java for SonarCloud
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
+        uses: SonarSource/sonarcloud-github-action@master
         with:
           projectBaseDir: app
         env:
@@ -33,12 +39,15 @@ jobs:
           SONAR_ORGANIZATION: junalchowdhurygomez
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL || 'https://sonarcloud.io' }}
         args: >
-          -Dsonar.projectKey=junalchowdhurygomez_BackDoor
+          -Dsonar.projectKey=JunalChowdhuryGomez_BackDoor
           -Dsonar.organization=junalchowdhurygomez
           -Dsonar.sources=app
           -Dsonar.python.version=3.11
           -Dsonar.coverage.exclusions=tests/**,**/__init__.py
           -Dsonar.test.exclusions=tests/**
+          -Dsonar.c.file.suffixes=-
+          -Dsonar.cpp.file.suffixes=-
+          -Dsonar.objc.file.suffixes=-
           
       - name: Run Security Scan
         run: bandit -r app
