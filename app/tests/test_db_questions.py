@@ -27,43 +27,46 @@ class TestGetQuestions(unittest.TestCase):
 
 
 # test:verifica la conectividad con la base datos y la obtencion de preguntas (se asume que hay al menos hay una pregunta en la base de datos)
+class TestDatabaseQuestions(unittest.TestCase):
 
-@patch("database.psycopg2.connect")
-def test_get_questions_from_db_with_valid_difficulty(mock_connect):
-    # Simula cursor y fetch
-    mock_cursor = MagicMock()
-    mock_cursor.fetchall.return_value = [
-        ("¿Capital de Francia?", "Londres", "París", "Madrid", "Roma", 1, 1),
-        ("¿2 + 2?", "1", "2", "3", "4", 3, 1),
-    ]
-    mock_connection = MagicMock()
-    mock_connection.cursor.return_value = mock_cursor
-    mock_connect.return_value = mock_connection
+    @patch("database.psycopg2.connect")
+    def test_get_questions_with_valid_difficulty(self, mock_connect):
+        mock_cursor = MagicMock()
+        mock_cursor.fetchall.return_value = [
+            ("¿Capital de Francia?", "Londres", "París", "Madrid", "Roma", 1, 1),
+            ("¿2 + 2?", "1", "2", "3", "4", 3, 1),
+        ]
+        mock_connection = MagicMock()
+        mock_connection.cursor.return_value = mock_cursor
+        mock_connect.return_value = mock_connection
 
-    questions = get_questions_from_db(1)
+        questions = get_questions_from_db(1)
 
-    assert isinstance(questions, list)
-    assert len(questions) == 2
-    assert all(isinstance(q, Question) for q in questions)
-    assert questions[0].difficulty == 1
-    assert questions[0].description == "¿Capital de Francia?"
+        self.assertIsInstance(questions, list)
+        self.assertEqual(len(questions), 2)
+        self.assertTrue(all(isinstance(q, Question) for q in questions))
+        self.assertEqual(questions[0].difficulty, 1)
+        self.assertEqual(questions[0].description, "¿Capital de Francia?")
 
-@patch("database.psycopg2.connect")
-def test_get_questions_from_db_without_difficulty(mock_connect):
-    mock_cursor = MagicMock()
-    mock_cursor.fetchall.return_value = [
-        ("Pregunta prueba", "A", "B", "C", "D", 0, 2)
-    ]
-    mock_connection = MagicMock()
-    mock_connection.cursor.return_value = mock_cursor
-    mock_connect.return_value = mock_connection
+    @patch("database.psycopg2.connect")
+    def test_get_questions_without_difficulty(self, mock_connect):
+        mock_cursor = MagicMock()
+        mock_cursor.fetchall.return_value = [
+            ("Pregunta prueba", "A", "B", "C", "D", 0, 2)
+        ]
+        mock_connection = MagicMock()
+        mock_connection.cursor.return_value = mock_cursor
+        mock_connect.return_value = mock_connection
 
-    questions = get_questions_from_db()
-    assert len(questions) == 1
-    assert isinstance(questions[0], Question)
-    assert questions[0].description == "Pregunta prueba"
+        questions = get_questions_from_db()
 
-@patch("database.psycopg2.connect")
-def test_get_questions_from_db_with_invalid_difficulty(mock_connect):
-    with pytest.raises(ValueError):
-        get_questions_from_db(5)
+        self.assertEqual(len(questions), 1)
+        self.assertIsInstance(questions[0], Question)
+        self.assertEqual(questions[0].description, "Pregunta prueba")
+
+    def test_get_questions_with_invalid_difficulty(self):
+        with self.assertRaises(ValueError):
+            get_questions_from_db(5)
+
+if __name__ == '__main__':
+    unittest.main()
