@@ -91,4 +91,6 @@ def result():
 load_dotenv()
 #  inicia la app 
 if __name__ == '__main__':
+    print("Conectando a:", os.getenv("DB_NAME"), os.getenv("DB_HOST"))
+
     app.run(host='0.0.0.0', port=5000)
