@@ -37,7 +37,7 @@ jobs:
           args: >
             -Dsonar.projectKey=JunalChowdhuryGomez_BackDoor
             -Dsonar.organization=junalchowdhurygomez
-            -Dsonar.sources=app
+            -Dsonar.sources=.
             -Dsonar.c.file.suffixes=-
             -Dsonar.cpp.file.suffixes=-
             -Dsonar.objc.file.suffixes=-
