@@ -13,9 +13,6 @@ def get_questions_from_db(difficulty=None):
 # Obtener la URL de conexión
     db_url = os.getenv("DATABASE_URL")
 
-    # Parsear la URL
-    result = urlparse(db_url)
-
     # connexion a la bd "trivia_db"  de postgres
     connection = psycopg2.connect(
         dbname="trivia_db",

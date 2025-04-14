@@ -40,7 +40,7 @@ def obtener_respuesta_valida(num_opciones):
                 answer -= 1  # restamos 1 para que coincida con los índices (0-3)
                 break
             else:
-                print(f"clave no permitida, vuelve a intentar")
+                print("clave no permitida, vuelve a intentar")
         except ValueError:
             print("entrada invalida - vuelvea intentar")
     return answer
