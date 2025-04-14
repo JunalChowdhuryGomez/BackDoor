@@ -33,16 +33,11 @@ jobs:
           projectBaseDir: app
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_PROJECT_KEY: junalchowdhurygomez_BackDoor
-          SONAR_ORGANIZATION: junalchowdhurygomez
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL || 'https://sonarcloud.io' }}
         args: >
           -Dsonar.projectKey=JunalChowdhuryGomez_BackDoor
           -Dsonar.organization=junalchowdhurygomez
           -Dsonar.sources=app
-          -Dsonar.python.version=3.11
-          -Dsonar.coverage.exclusions=tests/**,**/__init__.py
-          -Dsonar.test.exclusions=tests/**
           -Dsonar.c.file.suffixes=-
           -Dsonar.cpp.file.suffixes=-
           -Dsonar.objc.file.suffixes=-
