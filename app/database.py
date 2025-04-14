@@ -4,6 +4,8 @@ import os
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 from question import Question
+load_dotenv(".env")
+
 # refactorizamos el metodo get_questions_from_db para que reciba un parameto opcional difficulty
 def get_questions_from_db(difficulty=None):
     # validadmos que la dificulatad este entre 1 y 3
