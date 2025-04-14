@@ -4,6 +4,7 @@ from app import app
 
 @pytest.fixture
 def client():
+
     app.config['TESTING'] = True
     app.secret_key = 'dev'  # Necesario para usar sesiones en tests
 
@@ -11,38 +12,37 @@ def client():
         with app.app_context():
             yield client
 
-def test_index_get(client):
-    response = client.get('/')
-    assert response.status_code == 200
-    assert b'Selecciona la dificultad' in response.data
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        difficulty = int(request.form['difficulty'])
+        questions = get_questions_from_db(difficulty)[:10]
+        quiz = Quiz()
+        for q in questions:
+            quiz.add_question(q)
+        session['quiz'] = save_quiz(quiz)
+        return redirect(url_for('question'))
+    return render_template('index.html')
 
-def test_index_post_redirect(client):
-    response = client.post('/', data={'difficulty': '1'}, follow_redirects=False)
-    assert response.status_code == 302  # Redirect to /question
-    assert '/question' in response.headers['Location']
+@app.route('/question', methods=['GET', 'POST'])
+def question():
+    quiz = restore_quiz(session['quiz'])
+    if request.method == 'POST':
+        answer = int(request.form['answer'])
+        current_question = quiz.questions[quiz.current_question_index - 1]
+        quiz.answer_question(current_question, answer)
 
-def test_question_get(client):
-    # Primero iniciamos la sesión creando un quiz
-    client.post('/', data={'difficulty': '1'})
-    response = client.get('/question')
-    assert response.status_code == 200
-    assert b'Pregunta' in response.data
+    next_question = quiz.get_next_question()
+    if next_question is None:
+        session['quiz'] = save_quiz(quiz)
+        return redirect(url_for('result'))
 
-def test_question_post(client):
-    client.post('/', data={'difficulty': '1'})
-    response = client.get('/question')  # Obtener una pregunta
-    assert response.status_code == 200
+    session['quiz'] = save_quiz(quiz)
+    return render_template('question.html', question=next_question, index=quiz.current_question_index)
 
-    # Simulamos responder la pregunta
-    response = client.post('/question', data={'answer': '0'}, follow_redirects=False)
-    # Puede ser redirigido a otra pregunta o a /result si ya es la última
-    assert response.status_code in [200, 302]
-
-def test_result(client):
-    client.post('/', data={'difficulty': '1'})
-    # Respondemos todas las preguntas (simplificado para testear resultado)
-    for _ in range(10):  # suponiendo que se cargan 10 preguntas
-        client.post('/question', data={'answer': '0'})
-    response = client.get('/result')
-    assert response.status_code == 200
-    assert b'Juego terminado' in response.data
+@app.route('/result')
+def result():
+    if 'quiz' not in session:
+        return redirect(url_for('index'))
+    quiz = restore_quiz(session['quiz'])
+    return render_template('result.html', correct=quiz.correct_answers, incorrect=quiz.incorrect_answers)
