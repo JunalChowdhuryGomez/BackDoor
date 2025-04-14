@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 from app import app
 
-from quiz import Quiz, Question, save_quiz, restore_quiz
+from quiz import Quiz
 from database import get_questions_from_db
 
 
