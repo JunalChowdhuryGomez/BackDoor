@@ -41,3 +41,6 @@ jobs:
             -Dsonar.verbose=true
             -Dsonar.scm.provider=git
             -Dsonar.cpd.exclusions=app/tests/**
+      
+      - name: Run Security Scan
+        run: bandit -r app
