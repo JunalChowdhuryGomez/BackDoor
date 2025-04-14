@@ -23,24 +23,14 @@ jobs:
       - name: Run tests
         run: pytest app/tests
 
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@v2.3.0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          projectBaseDir: app
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL || 'https://sonarcloud.io' }}
-        with:
-          args: >
-            -Dsonar.projectKey=junalchowdhurygomez_BackDoor
-            -Dsonar.organization=junalchowdhurygomez
-            -Dsonar.sources=app
-            -Dsonar.python.version=3.11
-            -Dsonar.python.coverage.reportPaths=app/coverage.xml
-            -Dsonar.coverage.exclusions=app/tests/**,**/__init__.py
-            -Dsonar.test.exclusions=app/tests/**
-            -Dsonar.python.xunit.reportPath=app/tests/report.xml
-            -Dsonar.verbose=true
-            -Dsonar.scm.provider=git
-            -Dsonar.cpd.exclusions=app/tests/**
-      
+          SONAR_PROJECT_KEY: junalchowdhurygomez_BackDoor
+          SONAR_ORGANIZATION: junalchowdhurygomez
+
       - name: Run Security Scan
         run: bandit -r app
