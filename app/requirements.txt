@@ -21,4 +21,3 @@ pytest==7.4.0
 Flask==2.3.3
 python-dotenv==1.0.0
 bandit==1.7.4
-unittest==1.1.0

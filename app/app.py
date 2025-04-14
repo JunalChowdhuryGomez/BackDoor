@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from database import get_questions_from_db
 from question import Question
 from quiz import Quiz
-from flask_wtf.csrf import CSRFProtect
 import os
 
 app = Flask(__name__)
