@@ -1,5 +1,8 @@
 import psycopg2
 import random
+import os
+from urllib.parse import urlparse
+from dotenv import load_dotenv
 from question import Question
 # refactorizamos el metodo get_questions_from_db para que reciba un parameto opcional difficulty
 def get_questions_from_db(difficulty=None):
@@ -7,6 +10,12 @@ def get_questions_from_db(difficulty=None):
     if difficulty is not None and difficulty not in [1, 2, 3]:
         raise ValueError("La dificultad debe ser 1, 2 o 3")
     
+# Obtener la URL de conexión
+    db_url = os.getenv("DATABASE_URL")
+
+    # Parsear la URL
+    result = urlparse(db_url)
+
     # connexion a la bd "trivia_db"  de postgres
     connection = psycopg2.connect(
         dbname="trivia_db",
@@ -41,5 +50,5 @@ def get_questions_from_db(difficulty=None):
         for row in rows
     ]
     # mezclamos las preguntas
-    random.shuffle(questions)
+    #random.shuffle(questions)
     return questions

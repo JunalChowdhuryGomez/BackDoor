@@ -1,5 +1,5 @@
 -- creacion de la tabla
-CREATE TABLE IF NOT EXISTS stions (
+CREATE TABLE IF NOT EXISTS questions (
     id SERIAL PRIMARY KEY,
     description TEXT NOT NULL,
     option_1 TEXT NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS stions (
 
 --  preguntas de prueba
 -- preguntas nivel 1
-INSERT INTO stions (description, option_1, option_2, option_3, option_4, correct_option_index, difficulty)
+INSERT INTO questions (description, option_1, option_2, option_3, option_4, correct_option_index, difficulty)
 VALUES
 ('En  año se proclamo la Independencia del Peru', '1810', '1821', '1835', '1840', 1, 1),
 ('Quien fue el primer presidente del Peru', 'Simon Bolivar', 'Jose de San Martin', 'Jose de la Riva-Agüero', 'Ramon Castilla', 2, 1),
@@ -26,7 +26,7 @@ VALUES
 (' tratado puso fin a la Guerra del Pacifico', 'Tratado de Ancon', 'Tratado de Lima', 'Tratado de Paz con Chile', 'Tratado de Guayaquil', 0, 1);
 
 -- preguntas nivel 2
-INSERT INTO stions (description, option_1, option_2, option_3, option_4, correct_option_index, difficulty)
+INSERT INTO questions (description, option_1, option_2, option_3, option_4, correct_option_index, difficulty)
 VALUES
 (' rebelion indigena fue liderada por Tupac Amaru II', 'Rebelion de Huánuco', 'Gran Rebelion de 1780', 'Revolucion de Tacna', 'Sublevacion de Huaraz', 1, 2),
 (' presidente implemento el "Oncenio" en el Peru', 'oscar R. Benavides', 'Augusto B. Leguia', 'Manuel Prado', 'Fernando Belaunde', 1, 2),
@@ -40,7 +40,7 @@ VALUES
 (' presidente peruano fue derrocado por Fujimori en 1992', 'Alan Garcia', 'Valentin Paniagua', 'Alberto Fujimori', 'Fernando Belaunde', 0, 2);
 
 -- preguntas nivel 3
-INSERT INTO stions (description, option_1, option_2, option_3, option_4, correct_option_index, difficulty)
+INSERT INTO questions (description, option_1, option_2, option_3, option_4, correct_option_index, difficulty)
 VALUES
 (' lider indigena resistio en la "Breña" durante la Guerra del Pacifico', 'Miguel Iglesias', 'Lizardo Montero', 'Andres A. Cáceres', 'Francisco Garcia Calderon', 2, 3),
 (' tratado cedio Tarapacá a Chile despues de la Guerra del Pacifico', 'Tratado de Lima', 'Tratado de Ancon', 'Tratado de Valparaiso', 'Tratado de Paz y Amistad', 1, 3),

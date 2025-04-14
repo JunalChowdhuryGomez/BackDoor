@@ -2,9 +2,7 @@ from question import Question
 from quiz import Quiz
 from database import get_questions_from_db
 
-def run_quiz():
-    # inicia el objeto Quiz
-    quiz = Quiz()
+def seleccionar_dificultad():
     print("Bienvenido al Quiz de Historia del Peru")
     # solicita el nivel de dificultad
     print("=========================================")
@@ -26,6 +24,44 @@ def run_quiz():
                 print(f"clave no permitida")
         except ValueError:
             print("entrada invalida - vuelvea intentar")
+
+def mostrar_pregunta(quiz, question):
+    print(f"\nPregunta {quiz.current_question_index}: {question.description}")
+    for idx, opt in enumerate(question.options):
+        print(f"{idx + 1}. {opt}")
+
+# solicita la respuesta del usuario
+def obtener_respuesta_valida(num_opciones):
+    while True:
+        # valida la respuesta
+        try:
+            answer = int(input("respuesta >>> "))
+            if 1 <= answer <= num_opciones:
+                answer -= 1  # restamos 1 para que coincida con los índices (0-3)
+                break
+            else:
+                print(f"clave no permitida")
+        except ValueError:
+            print("entrada invalida - vuelvea intentar")
+    return answer
+
+
+def mostrar_resultados(quiz):
+    # muestra el resultado final
+    print()
+    print("=========================================") 
+    print("============ Juego terminado ============")
+    print(f"respuestas Correctas: {quiz.correct_answers}")
+    print(f"respuestas Incorrectas: {quiz.incorrect_answers}")
+    print("=========================================")
+
+
+def run_quiz():
+    # inicia el objeto Quiz
+    quiz = Quiz()
+    
+    # selecciona la dificultad
+    nivel=seleccionar_dificultad()
     
     # obtiene las preguntas de la base de datos en base al nivel elegido
     questions = get_questions_from_db()[:10] if nivel == 4 else get_questions_from_db(nivel)[:10]
@@ -37,36 +73,19 @@ def run_quiz():
         question = quiz.get_next_question()
         if not question:
             break
-        print(f"\nPregunta {quiz.current_question_index}: {question.description}")
-        for idx, opt in enumerate(question.options):
-            print(f"{idx + 1}. {opt}")
 
-        # solicita la respuesta del usuario
-        while True:
-            # valida la respuesta
-            try:
-                answer = int(input("respuesta >>> "))
-                if 1 <= answer <= len(question.options):
-                    answer -= 1  # restamos 1 para que coincida con los índices (0-3)
-                    break
-                else:
-                    print(f"clave no permitida")
-            except ValueError:
-                print("entrada invalida - vuelvea intentar")
+        mostrar_pregunta(quiz, question)
+        
+        respuesta =  obtener_respuesta_valida(len(question.options))
+        
         # verifica si la respuesta es correcta
-        if quiz.answer_question(question, answer):
+        if quiz.answer_question(question, respuesta):
             print("======== Correcto =======")
         else:
             print("======== Incorrecto =======")
 
     # termina el juego
-    # muestra el resultado final
-    print()
-    print("=========================================") 
-    print("============ Juego terminado ============")
-    print(f"respuestas Correctas: {quiz.correct_answers}")
-    print(f"respuestas Incorrectas: {quiz.incorrect_answers}")
-    print("=========================================")
+    mostrar_resultados(quiz)
 
 # funcion principal
 # inicia el programa

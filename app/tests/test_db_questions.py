@@ -8,12 +8,12 @@ from question import Question
 
 # test:verifica la conectividad con la base datos y la obtencion de preguntas (se asume que hay al menos hay una pregunta en la base de datos)
 
-"""
+
 def test_get_questions_from_db_returns_list():
     questions = get_questions_from_db()
     assert isinstance(questions, list)
     assert all(hasattr(q, 'description') for q in questions)
-"""
+
 
 @patch("database.psycopg2.connect")
 def test_get_questions_from_db_with_valid_difficulty(mock_connect):

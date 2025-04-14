@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ .
 
 # para ejecutar la interfaz en navegador (localhost:5000)
-#CMD ["python", "app.py"]
+CMD ["python", "app.py"]
 
 # para ejecutar la interfaz enterminal
-CMD ["python", "main.py"]
+#CMD ["python", "main.py"]
