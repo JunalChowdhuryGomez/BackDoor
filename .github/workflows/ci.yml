@@ -31,6 +31,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_PROJECT_KEY: junalchowdhurygomez_BackDoor
           SONAR_ORGANIZATION: junalchowdhurygomez
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL || 'https://sonarcloud.io' }}
         args: >
           -Dsonar.projectKey=junalchowdhurygomez_BackDoor
           -Dsonar.organization=junalchowdhurygomez
