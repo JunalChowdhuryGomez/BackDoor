@@ -31,6 +31,13 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_PROJECT_KEY: junalchowdhurygomez_BackDoor
           SONAR_ORGANIZATION: junalchowdhurygomez
-
+        args: >
+          -Dsonar.projectKey=junalchowdhurygomez_BackDoor
+          -Dsonar.organization=junalchowdhurygomez
+          -Dsonar.sources=app
+          -Dsonar.python.version=3.11
+          -Dsonar.coverage.exclusions=tests/**,**/__init__.py
+          -Dsonar.test.exclusions=tests/**
+          
       - name: Run Security Scan
         run: bandit -r app
