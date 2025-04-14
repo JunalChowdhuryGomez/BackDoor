@@ -5,7 +5,7 @@ from database import get_questions_from_db
 def seleccionar_dificultad():
     print("Bienvenido al Quiz de Historia del Peru")
     # solicita el nivel de dificultad
-    print("=========================================")
+    #print("=========================================")
     print("Elige la dificultad del Quiz")
     print("1. Facil")
     print("2. Intermedio")
@@ -21,7 +21,7 @@ def seleccionar_dificultad():
                 nivel -= 1
                 break
             else:
-                print(f"clave no permitida")
+                print("Opcion no disponible, vuelve a intentar")
         except ValueError:
             print("entrada invalida - vuelvea intentar")
 
@@ -40,7 +40,7 @@ def obtener_respuesta_valida(num_opciones):
                 answer -= 1  # restamos 1 para que coincida con los índices (0-3)
                 break
             else:
-                print(f"clave no permitida")
+                print(f"clave no permitida, vuelve a intentar")
         except ValueError:
             print("entrada invalida - vuelvea intentar")
     return answer
@@ -49,11 +49,11 @@ def obtener_respuesta_valida(num_opciones):
 def mostrar_resultados(quiz):
     # muestra el resultado final
     print()
-    print("=========================================") 
+    #print("=========================================") 
     print("============ Juego terminado ============")
     print(f"respuestas Correctas: {quiz.correct_answers}")
     print(f"respuestas Incorrectas: {quiz.incorrect_answers}")
-    print("=========================================")
+    #print("=========================================")
 
 
 def run_quiz():

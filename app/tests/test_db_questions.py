@@ -17,7 +17,7 @@ def test_get_questions_from_db_returns_list():
 
 @patch("database.psycopg2.connect")
 def test_get_questions_from_db_with_valid_difficulty(mock_connect):
-    # Simula conexión y cursor
+    # Simula cursor y fetch
     mock_cursor = MagicMock()
     mock_cursor.fetchall.return_value = [
         ("¿Capital de Francia?", "Londres", "París", "Madrid", "Roma", 1, 1),
@@ -29,14 +29,11 @@ def test_get_questions_from_db_with_valid_difficulty(mock_connect):
 
     questions = get_questions_from_db(1)
 
+    assert isinstance(questions, list)
     assert len(questions) == 2
     assert all(isinstance(q, Question) for q in questions)
     assert questions[0].difficulty == 1
-
-@patch("database.psycopg2.connect")
-def test_get_questions_from_db_with_invalid_difficulty(mock_connect):
-    with pytest.raises(ValueError):
-        get_questions_from_db(5)
+    assert questions[0].description == "¿Capital de Francia?"
 
 @patch("database.psycopg2.connect")
 def test_get_questions_from_db_without_difficulty(mock_connect):
@@ -50,4 +47,10 @@ def test_get_questions_from_db_without_difficulty(mock_connect):
 
     questions = get_questions_from_db()
     assert len(questions) == 1
+    assert isinstance(questions[0], Question)
     assert questions[0].description == "Pregunta prueba"
+
+@patch("database.psycopg2.connect")
+def test_get_questions_from_db_with_invalid_difficulty(mock_connect):
+    with pytest.raises(ValueError):
+        get_questions_from_db(5)

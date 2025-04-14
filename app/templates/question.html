@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head><title>Pregunta {{ index }}</title></head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pregunta {{ index }}</title>
+</head>
 <body>
-    <center>
+    <main style="text-align: center;">
         <h2>Pregunta {{ index }} (Dificultad: {{ question.difficulty }})</h2>
         <p>{{ question.description }}</p>
         <form method="POST">
-            {% for i in range(question.options|length) %}
-                <input type="radio" name="answer" value="{{ i }}" required> {{ question.options[i] }}<br>
+            {% for i in range(question.options | length) %}
+                <div>
+                    <input type="radio" id="option{{ i }}" name="answer" value="{{ i }}" required>
+                    <label for="option{{ i }}">{{ question.options[i] }}</label>
+                </div>
             {% endfor %}
             <button type="submit">Responder</button>
         </form>
-    </center>
+    </main>
 </body>
 </html>
