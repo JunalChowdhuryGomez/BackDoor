@@ -1,53 +1,52 @@
 import pytest
-from flask import Flask, render_template, request, redirect, url_for, session
-
-from app import app
-from app import save_quiz, restore_quiz
+from app import app, save_quiz, restore_quiz
 from quiz import Quiz
-from database import get_questions_from_db
-
+from question import Question
 
 @pytest.fixture
 def client():
-
     app.config['TESTING'] = True
-    app.secret_key = 'dev'  # Necesario para usar sesiones en tests
-
     with app.test_client() as client:
-        with app.app_context():
-            yield client
+        with client.session_transaction() as session:
+            session.clear()
+        yield client
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        difficulty = int(request.form['difficulty'])
-        questions = get_questions_from_db(difficulty)[:10]
+def test_index_get(client):
+    """Prueba que la ruta principal devuelva el formulario de dificultad"""
+    response = client.get('/')
+    assert response.status_code == 200
+    assert b"Selecciona la dificultad" in response.data
+
+def test_index_post(client, monkeypatch):
+    """Prueba el envío del formulario de dificultad"""
+    # Mock de la función que obtiene preguntas
+    def mock_get_questions(difficulty):
+        return [Question("Pregunta test", ["Op1", "Op2"], 0, difficulty)]
+    
+    monkeypatch.setattr('app.get_questions_from_db', mock_get_questions)
+    
+    response = client.post('/', data={'difficulty': '1'}, follow_redirects=True)
+    assert response.status_code == 200
+    assert b"Pregunta test" in response.data
+
+def test_question_flow(client, monkeypatch):
+    """Prueba el flujo completo de preguntas y respuestas"""
+    # Configurar un quiz en la sesión
+    with client.session_transaction() as session:
         quiz = Quiz()
-        for q in questions:
-            quiz.add_question(q)
+        quiz.add_question(Question("P1", ["A", "B"], 0, 1))
+        quiz.add_question(Question("P2", ["C", "D"], 1, 1))
         session['quiz'] = save_quiz(quiz)
-        return redirect(url_for('question'))
-    return render_template('index.html')
-
-@app.route('/question', methods=['GET', 'POST'])
-def question():
-    quiz = restore_quiz(session['quiz'])
-    if request.method == 'POST':
-        answer = int(request.form['answer'])
-        current_question = quiz.questions[quiz.current_question_index - 1]
-        quiz.answer_question(current_question, answer)
-
-    next_question = quiz.get_next_question()
-    if next_question is None:
-        session['quiz'] = save_quiz(quiz)
-        return redirect(url_for('result'))
-
-    session['quiz'] = save_quiz(quiz)
-    return render_template('question.html', question=next_question, index=quiz.current_question_index)
-
-@app.route('/result')
-def result():
-    if 'quiz' not in session:
-        return redirect(url_for('index'))
-    quiz = restore_quiz(session['quiz'])
-    return render_template('result.html', correct=quiz.correct_answers, incorrect=quiz.incorrect_answers)
+    
+    # Primera pregunta
+    response = client.get('/question')
+    assert b"P1" in response.data
+    
+    # Responder primera pregunta
+    response = client.post('/question', data={'answer': '0'}, follow_redirects=True)
+    assert b"P2" in response.data
+    
+    # Responder segunda pregunta
+    response = client.post('/question', data={'answer': '1'}, follow_redirects=True)
+    assert b"Juego terminado" in response.data
+    assert b"Respuestas correctas: 2" in response.data
