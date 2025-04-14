@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS stions (
     correct_option_index INT NOT NULL CHECK (correct_option_index BETWEEN 0 AND 3),
     difficulty INT NOT NULL CHECK (difficulty BETWEEN 1 AND 3)
 );
-"""
+
 --  preguntas de prueba
 -- preguntas nivel 1
 INSERT INTO stions (description, option_1, option_2, option_3, option_4, correct_option_index, difficulty)
@@ -52,4 +52,3 @@ VALUES
 (' heroe civil peruano murio defendiendo el Morro de Arica', 'Alfonso Ugarte', 'Francisco Bolognesi', 'Miguel Grau', 'Andres A. Cáceres', 1, 3),
 ('En  gobierno se creo el Sol (nuevo sol) como moneda oficial', 'Alan Garcia (1985)', 'Alberto Fujimori (1991)', 'Alejandro Toledo (2001)', 'Fernando Belaunde (1980)', 1, 3),
 (' arologo descubrio la ciudadela de Caral', 'Julio C. Tello', 'Ruth Shady', 'Walter Alva', 'Luis Lumbreras', 1, 3);
-"""
