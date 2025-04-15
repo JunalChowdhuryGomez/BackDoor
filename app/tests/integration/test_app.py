@@ -6,13 +6,13 @@ import unittest
 from unittest.mock import patch
 from dotenv import load_dotenv
 import os
-
+from dotenv import load_dotenv
 
 class FlaskAppTestCase(unittest.TestCase):
     def setUp(self):
-        load_dotenv()
         app.config["TESTING"] = True
-        app.secret_key = 'test_secret_key'
+        FLASK_SECRET_KEY = 'test_secret_key'
+        app.secret_key = FLASK_SECRET_KEY
         self.client = app.test_client()
 
     def test_index_get(self):
