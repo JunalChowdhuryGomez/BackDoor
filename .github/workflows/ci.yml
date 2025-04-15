@@ -20,9 +20,9 @@ jobs:
           pip install -r app/requirements.txt
           pip install coverage bandit
 
-      - name: Run tests with unittest + coverage
+      - name: Run tests
         run: |
-          coverage run -m unittest discover -s app/tests -p "test_*.py"
+          coverage run -m pytest app/tests
           coverage xml
 
       - name: Set up Java for SonarCloud
