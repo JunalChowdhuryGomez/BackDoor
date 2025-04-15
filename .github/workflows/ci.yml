@@ -36,10 +36,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
-        with:
-          projectBaseDir: app
-          args: >
-            -Dsonar.projectKey=JunalChowdhuryGomez_BackDoor
       - name: Run Bandit Security Scan
         run: bandit -r app
       
