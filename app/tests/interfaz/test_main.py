@@ -25,12 +25,12 @@ class TestMainFunctions(unittest.TestCase):
         self.assertEqual(obtener_respuesta_valida(3), 1)
 
     def test_mostrar_pregunta_output(self):
-        question = Question("¿Capital del Perú?", ["Lima", "Cusco", "Arequipa", "Trujillo"], 0, "Facil")
+        question = Question("¿Capital del Perú?", ["Lima", "Cusco", "Arequipa", "Trujillo"], 0, 1)
         quiz = Quiz()
         quiz.current_question_index = 1
         with patch('builtins.print') as mock_print:
             mostrar_pregunta(quiz, question)
-            mock_print.assert_any_call("\nPregunta 1: ¿Capital del Perú?")
+            mock_print.assert_any_call("Pregunta 1: ¿Capital del Perú?")
 
     def test_mostrar_resultados(self):
         quiz = Quiz()

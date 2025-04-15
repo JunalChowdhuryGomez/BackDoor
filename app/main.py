@@ -23,9 +23,10 @@ def seleccionar_dificultad():
                 print("Opcion no disponible, vuelve a intentar")
         except ValueError:
             print("entrada invalida - vuelvea intentar")
+    return nivel
 
 def mostrar_pregunta(quiz, question):
-    print(f"\nPregunta {quiz.current_question_index}: {question.description}")
+    print(f"Pregunta {quiz.current_question_index}: {question.description}")
     for idx, opt in enumerate(question.options):
         print(f"{idx + 1}. {opt}")
 
