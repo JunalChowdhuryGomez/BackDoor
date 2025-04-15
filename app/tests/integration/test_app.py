@@ -1,18 +1,19 @@
-
+from dotenv import load_dotenv
+import os
 from app import app, save_quiz, restore_quiz
 from quiz import Quiz
 from question import Question
 import unittest
 from unittest.mock import patch
-from dotenv import load_dotenv
-import os
-from dotenv import load_dotenv
+
+
+load_dotenv('.env')
 
 class FlaskAppTestCase(unittest.TestCase):
+
     def setUp(self):
         app.config["TESTING"] = True
-        FLASK_SECRET_KEY = 'test_secret_key'
-        app.secret_key = FLASK_SECRET_KEY
+        app.secret_key = os.getenv("FLASK_SECRET_KEY_TEST","mi_clave_segura")
         self.client = app.test_client()
 
     def test_index_get(self):
