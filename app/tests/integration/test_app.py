@@ -7,7 +7,7 @@ import unittest
 from unittest.mock import patch
 
 
-load_dotenv('.env')
+load_dotenv()
 
 class FlaskAppTestCase(unittest.TestCase):
 

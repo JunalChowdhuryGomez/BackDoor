@@ -24,6 +24,7 @@ services:
       dockerfile: app/Dockerfile
     environment:
       - FLASK_SECRET_KEY=mi_clave_segura
+      - FLASK_SECRET_KEY_TEST=mi_clave_segura
     volumes:
       - ./app:/app
     env_file:
