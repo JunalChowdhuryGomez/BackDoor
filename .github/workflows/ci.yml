@@ -16,10 +16,14 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install -r app/requirements.txt
+        run: |
+          pip install -r app/requirements.txt
+          pip install coverage bandit
 
       - name: Run tests
-        run: pytest app/tests
+        run: |
+          coverage run -m pytest app/tests
+          coverage xml
 
       - name: Set up Java for SonarCloud
         uses: actions/setup-java@v3
@@ -36,11 +40,6 @@ jobs:
           projectBaseDir: app
           args: >
             -Dsonar.projectKey=JunalChowdhuryGomez_BackDoor
-            -Dsonar.organization=junalchowdhurygomez
-            -Dsonar.sources=.
-            -Dsonar.c.file.suffixes=-
-            -Dsonar.cpp.file.suffixes=-
-            -Dsonar.objc.file.suffixes=-
       - name: Run Bandit Security Scan
         run: bandit -r app
       
