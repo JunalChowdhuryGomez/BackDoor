@@ -29,7 +29,6 @@ jobs:
       - name: Instalar dependencias
         run: |
           pip install -r requirements.txt
-          pip install behave-junit-formatter
 
       - name: Verificar estilo de código con flake8
         run: flake8 src/ tests/
