@@ -44,15 +44,3 @@ jobs:
         with:
           name: reportes
           path: reports/
-
-      - name: Subir cobertura HTML como artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: cobertura-html
-          path: htmlcov/
-
-      - name: Mostrar contenido de reports/
-        run: ls -R reports/
-
-      - name: Mostrar contenido de htmlcov/
-        run: ls -la htmlcov/
