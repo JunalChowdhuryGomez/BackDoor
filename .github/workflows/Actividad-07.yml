@@ -32,7 +32,7 @@ jobs:
       - name: Ejecutar pruebas unitarias y generar reporte JUnit + cobertura
         run: |
           mkdir -p reports
-          pytest --junitxml=reports/step-report.xml --cov=src --cov-report=html
+          pytest tests/ --junitxml=reports/pytest-report.xml --cov=src --cov-report=html
 
       - name: Ejecutar pruebas BDD y generar reporte JUnit
         run: |
