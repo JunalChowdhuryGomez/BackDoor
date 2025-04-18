@@ -3,20 +3,16 @@ name: CI Actividad 7
 on:
   push:
     branches: [main]
-    #paths:
-    #  - './Actividad-7/**'
   pull_request:
     branches: [main]
-    #paths:
-    #  - './Actividad-7/**'
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: Actividad-7
+
     steps:
       - name: Checkout repositorio
         uses: actions/checkout@v2
@@ -37,7 +33,7 @@ jobs:
         run: |
           mkdir -p reports
           pytest --junitxml=reports/step-report.xml --cov=src --cov-report=html
-      
+
       - name: Ejecutar pruebas BDD y generar reporte JUnit
         run: |
           mkdir -p reports
@@ -48,12 +44,15 @@ jobs:
         with:
           name: reportes
           path: reports/
+
       - name: Subir cobertura HTML como artifact
         uses: actions/upload-artifact@v4
         with:
           name: cobertura-html
-          path: Actividad-07/htmlcov/
+          path: htmlcov/
+
       - name: Mostrar contenido de reports/
         run: ls -R reports/
+
       - name: Mostrar contenido de htmlcov/
         run: ls -la htmlcov/
