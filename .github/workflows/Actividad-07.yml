@@ -44,3 +44,8 @@ jobs:
         with:
           name: reportes
           path: reports/
+      
+      - name: Verificar contenido de reports/
+        run: |
+          echo "Archivos en reports/"
+          ls -la reports/
