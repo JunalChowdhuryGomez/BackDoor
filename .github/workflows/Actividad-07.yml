@@ -36,21 +36,22 @@ jobs:
       - name: Ejecutar pruebas unitarias y generar reporte JUnit + cobertura
         run: |
           mkdir -p reports
-          pytest --junitxml=reports/pytest-report.xml --cov=src --cov-report=html
+          pytest --junitxml=reports/step-report.xml --cov=src --cov-report=html
       
       - name: Ejecutar pruebas BDD y generar reporte JUnit
         run: |
           mkdir -p reports
           behave
 
-      - name: Mostrar contenido de reports/
-        run: ls -R reports/
-
       - name: Subir reportes como artifacts
         uses: actions/upload-artifact@v4
         with:
           name: reportes
           path: reports/
-
+      - name: Subir cobertura HTML como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-html
+          path: htmlcov/
       - name: Mostrar contenido de reports/
         run: ls -R reports/
