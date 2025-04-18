@@ -3,12 +3,12 @@ name: CI Actividad 7
 on:
   push:
     branches: [main]
-    paths:
-      - './Actividad-7/**'
+    #paths:
+    #  - './Actividad-7/**'
   pull_request:
     branches: [main]
-    paths:
-      - './Actividad-7/**'
+    #paths:
+    #  - './Actividad-7/**'
 
 jobs:
   test:
