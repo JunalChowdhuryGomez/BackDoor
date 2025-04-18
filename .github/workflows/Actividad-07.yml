@@ -29,7 +29,7 @@ jobs:
           pip install -r Actividad-7/requirements.txt
 
       - name: Verificar estilo de código con flake8
-        run: flake8 Actividad-7/src/ Actividad-7/tests/
+        run: flake8 ./Actividad-7/src/ ./Actividad-7/tests/
 
       - name: Ejecutar pruebas unitarias y generar reporte JUnit + cobertura
         run: |
