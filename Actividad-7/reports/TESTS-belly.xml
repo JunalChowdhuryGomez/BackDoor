@@ -1,0 +1,164 @@
+<testsuite name="belly.Comportamiento del Estómago" tests="15" errors="0" failures="0" skipped="0" time="0.016459" timestamp="2025-04-18T18:12:26.508354" hostname="JUNAL"><testcase classname="belly.Comportamiento del Estómago" name="Comer muchos pepinos y gruñir" status="passed" time="0.000749"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Comer muchos pepinos y gruñir
+    Dado que he comido 42 pepinos ... passed in 0.000s
+    Cuando espero 2 horas ... passed in 0.000s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Comer pocos pepinos y no gruñir" status="passed" time="0.000695"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Comer pocos pepinos y no gruñir
+    Dado que he comido 10 pepinos ... passed in 0.000s
+    Cuando espero 2 horas ... passed in 0.000s
+    Entonces mi estómago no debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Comer muchos pepinos y esperar menos de una hora" status="passed" time="0.000505"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Comer muchos pepinos y esperar menos de una hora
+    Dado que he comido 50 pepinos ... passed in 0.000s
+    Cuando espero media hora ... passed in 0.000s
+    Entonces mi estómago no debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Comer pepinos y esperar en minutos" status="passed" time="0.000894"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Comer pepinos y esperar en minutos
+    Dado que he comido 30 pepinos ... passed in 0.000s
+    Cuando espero 90 minutos ... passed in 0.000s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Esperar con horas, minutos y segundos" status="passed" time="0.000999"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Esperar con horas, minutos y segundos
+    Dado que he comido 35 pepinos ... passed in 0.000s
+    Cuando espero "1 hora y 30 minutos y 45 segundos" ... passed in 0.001s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Comer pepinos fraccionarios" status="passed" time="0.000857"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Comer pepinos fraccionarios
+    Dado que he comido 0.5 pepinos ... passed in 0.000s
+    Cuando espero 2 horas ... passed in 0.000s
+    Entonces mi estómago no debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Manejar pepinos negativos" status="passed" time="0.001328"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Manejar pepinos negativos
+    Dado que he comido -5 pepinos ... passed in 0.001s
+    Entonces debería ocurrir un error de cantidad negativa. ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Comer 1000 pepinos y esperar 10 horas" status="passed" time="0.001049"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Comer 1000 pepinos y esperar 10 horas
+    Dado que he comido 1000 pepinos ... passed in 0.000s
+    Cuando espero 10 horas ... passed in 0.000s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Esperar usando horas en inglés" status="passed" time="0.000812"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Esperar usando horas en inglés
+    Dado que he comido 20 pepinos ... passed in 0.000s
+    Cuando espero two hours and thirty minutes ... passed in 0.000s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Comer pepinos y esperar tiempo aleatorio" status="passed" time="0.00109"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Comer pepinos y esperar tiempo aleatorio
+    Dado que he comido 25 pepinos ... passed in 0.000s
+    Cuando espero un tiempo aleatorio entre 1 y 3 horas ... passed in 0.000s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Verificar predicción de gruñido" status="passed" time="0.001285"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Verificar predicción de gruñido
+    Dado que he comido 12 pepinos ... passed in 0.001s
+    Cuando espero 1.5 horas ... passed in 0.000s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Saber cuántos pepinos puedo comer antes de gruñir" status="passed" time="0.002247"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Saber cuántos pepinos puedo comer antes de gruñir
+    Dado que he comido 8 pepinos ... passed in 0.000s
+    Cuando pregunto cuántos pepinos más puedo comer ... passed in 0.002s
+    Entonces debería decirme que puedo comer 3 pepinos más ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Saber cuántos pepinos he comido" status="passed" time="0.001343"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Saber cuántos pepinos he comido
+    Dado que he comido 15 pepinos ... passed in 0.001s
+    Entonces debería haber comido 15 pepinos ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Verificar que el estómago no gruñe por poco tiempo" status="passed" time="0.00082"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Verificar que el estómago no gruñe por poco tiempo
+    Dado que he comido 20 pepinos ... passed in 0.000s
+    Cuando espero 1 hora ... passed in 0.000s
+    Entonces mi estómago no debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="belly.Comportamiento del Estómago" name="Verificar que el estómago gruñe si se cumple todo" status="passed" time="0.001784"><system-out>
+<![CDATA[
+@scenario.begin
+  Escenario: Verificar que el estómago gruñe si se cumple todo
+    Dado que he comido 20 pepinos ... passed in 0.001s
+    Cuando espero 2 horas ... passed in 0.001s
+    Entonces mi estómago debería gruñir ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

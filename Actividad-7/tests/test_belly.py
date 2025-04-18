@@ -32,6 +32,18 @@ def test_comer_fraccionarios():
     assert belly.pepinos_comidos == 2.5
 
 
+#test reseteo
+def test_reset_con_valores_iniciales():
+    # Act (valores por defecto son 0)
+    belly = Belly()
+    belly.comer(15)
+    belly.esperar(2)
+    belly.reset()
+    # Assert
+    assert belly.pepinos_comidos == 0
+    assert belly.tiempo_esperado == 0
+
+
 # test cantidad de pepinos es positivo
 def test_no_permite_negativos():
     belly = Belly()
