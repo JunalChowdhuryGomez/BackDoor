@@ -41,8 +41,8 @@ jobs:
       - name: Ejecutar pruebas BDD y generar reporte JUnit
         run: behave -f junit -o reports/
 
-      #- name: Subir reportes como artifacts
-      #  uses: actions/upload-artifact@v3
-      #  with:
-      #    name: reportes
-      #    path: reports/
+      - name: Subir reporte HTML de cobertura
+        uses: actions/upload-artifact@v3
+        with:
+          name: cobertura-html
+          path: htmlcov/index.html
