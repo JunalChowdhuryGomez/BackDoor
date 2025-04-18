@@ -41,7 +41,7 @@ jobs:
       - name: Ejecutar pruebas BDD y generar reporte JUnit
         run: |
           mkdir -p reports
-          behave --junit=behave_report.xml -o reports/
+          behave
 
       - name: Mostrar contenido de reports/
         run: ls -R reports/
