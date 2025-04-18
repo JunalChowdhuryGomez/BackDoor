@@ -32,7 +32,7 @@ def test_comer_fraccionarios():
     assert belly.pepinos_comidos == 2.5
 
 
-# test reseteo
+# test reseteo de Belly
 def test_reset_con_valores_iniciales():
     belly = Belly()
     belly.comer(15)
