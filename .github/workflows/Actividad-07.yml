@@ -30,8 +30,8 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      #- name: Verificar estilo de código con flake8
-      #  run: flake8 ./Actividad-7/src/ ./Actividad-7/tests/
+      - name: Verificar estilo de código con flake8
+        run: flake8 src/ tests/
 
       - name: Ejecutar pruebas unitarias y generar reporte JUnit + cobertura
         run: |
