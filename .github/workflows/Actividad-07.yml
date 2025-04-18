@@ -4,18 +4,18 @@ on:
   push:
     branches: [main]
     paths:
-      - '/Actividad-07/**'
+      - './Actividad-7/**'
   pull_request:
     branches: [main]
     paths:
-      - '/Actividad-07/**'
+      - './Actividad-7/**'
 
 jobs:
   test:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./Actividad-07  # Todas las rutas serán relativas aquí
+        working-directory: ./Actividad-7  # Todas las rutas serán relativas aquí
 
     steps:
       - uses: actions/checkout@v4

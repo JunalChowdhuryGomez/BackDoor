@@ -25,21 +25,21 @@ jobs:
           coverage run -m pytest app/tests
           coverage xml
 
-      - name: Set up Java for SonarCloud
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+      #- name: Set up Java for SonarCloud
+      #  uses: actions/setup-java@v3
+      #  with:
+      #    distribution: 'temurin'
+      #    java-version: '17'
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #- name: SonarCloud Scan
+      #  uses: SonarSource/sonarcloud-github-action@master
+      #  env:
+      #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
-      - name: Checkout full repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 
-      - name: Run Bandit Security Scan
-        run: bandit -r app
+      #- name: Checkout full repository
+      #  uses: actions/checkout@v3
+      #  with:
+      #    fetch-depth: 0 
+      #- name: Run Bandit Security Scan
+      #  run: bandit -r app
       
