@@ -4,4 +4,4 @@ pytest-cov
 mock
 flake8
 behave[formatters]
-behave-junit-formatter==1.2.7
+behave-junit-formatter==1.2.0
