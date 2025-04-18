@@ -44,7 +44,7 @@ jobs:
           behave --junit --junit-directory  reports/
 
       - name: Subir reportes como artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: reportes
-          path: Actividad-7/reports/
+          path: reports/
