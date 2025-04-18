@@ -49,3 +49,4 @@ jobs:
         run: |
           echo "Archivos en reports/"
           ls -la reports/
+          pwd
