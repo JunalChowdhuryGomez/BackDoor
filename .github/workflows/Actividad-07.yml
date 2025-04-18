@@ -39,6 +39,14 @@ jobs:
           mkdir -p reports
           behave
 
+      - name: Verificar ubicacion
+        run: |
+          echo "Ubicacion de los reportes"
+          ls -la
+          ls -la reports/
+          pwd
+
+
       - name: Subir reportes como artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -48,6 +56,7 @@ jobs:
       - name: Verificar contenido de reports/
         run: |
           echo "Archivos en reports/"
+          ls -la
           ls -la reports/
           cat reports/TESTS-belly.xml
           cat reports/pytest-report.xml
