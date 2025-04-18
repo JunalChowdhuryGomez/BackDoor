@@ -37,3 +37,14 @@ jobs:
         run: |
           mkdir -p reports
           pytest --junitxml=reports/pytest-report.xml --cov=src --cov-report=html
+      
+      - name: Ejecutar pruebas BDD y generar reporte JUnit
+        run: |
+          mkdir -p reports
+          behave --junit --junit-directory  reports/
+
+      - name: Subir reportes como artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: reportes
+          path: Actividad-7/reports/
