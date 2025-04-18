@@ -34,12 +34,11 @@ def test_comer_fraccionarios():
 
 # test reseteo
 def test_reset_con_valores_iniciales():
-    # Act (valores por defecto son 0)
     belly = Belly()
     belly.comer(15)
     belly.esperar(2)
     belly.reset()
-    # Assert
+    # Asserts
     assert belly.pepinos_comidos == 0
     assert belly.tiempo_esperado == 0
 
