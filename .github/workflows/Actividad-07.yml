@@ -59,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cobertura-html
-          path: Actividad-07/htmlcov/
+          path: Actividad-7/htmlcov/
       
       - name: Verificar contenido de reports/
         run: |
