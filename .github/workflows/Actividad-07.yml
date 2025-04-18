@@ -41,8 +41,6 @@ jobs:
 
       - name: Subir reportes como artifacts
         uses: actions/upload-artifact@v4
-        run: |
-          pwd
         with:
           name: reportes
           path: reports/
