@@ -3,4 +3,4 @@ pytest
 pytest-cov
 mock
 flake8
-behave[formatters]
+behave[formatters]==1.2.6
