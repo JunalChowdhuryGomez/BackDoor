@@ -41,11 +41,11 @@ jobs:
       - name: Ejecutar pruebas BDD y generar reporte JUnit
         run: |
           mkdir -p reports
-          behave -f behave_junit_formatter:JUnitFormatter -o reports/
+          behave --junit=behave_report.xml -o reports/
 
       - name: Mostrar contenido de reports/
         run: ls -R reports/
-        
+
       - name: Subir reportes como artifacts
         uses: actions/upload-artifact@v4
         with:
