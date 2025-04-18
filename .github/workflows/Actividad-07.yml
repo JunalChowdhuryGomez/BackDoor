@@ -54,6 +54,12 @@ jobs:
         with:
           name: reportes
           path: Actividad-7/reports/
+
+      - name: Subir cobertura HTML como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-html
+          path: Actividad-07/htmlcov/
       
       - name: Verificar contenido de reports/
         run: |
