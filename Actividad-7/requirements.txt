@@ -4,4 +4,3 @@ pytest-cov
 mock
 flake8
 behave[formatters]
-behave-junit-formatters
