@@ -41,9 +41,11 @@ jobs:
 
       - name: Verificar ubicacion
         run: |
-          echo "Ubicacion de los reportes"
+          echo "raiz"
           ls -la
+          echo "reports"
           ls -la reports/
+          echo "pwd"
           pwd
 
 
