@@ -2,9 +2,6 @@ import pytest
 from src.belly import Belly
 
 
-# test para la clase Belly
-
-
 # test no gruñe si no ha comido nada
 def test_no_gruñe_si_no_ha_comido_nada():
     belly = Belly()
