@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Actividades/Actividad-7
+        working-directory: Actividad-7
     steps:
       - name: Checkout repositorio
         uses: actions/checkout@v2
