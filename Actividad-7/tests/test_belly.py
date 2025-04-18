@@ -12,7 +12,6 @@ def test_no_gruñe_si_no_ha_comido_nada():
     assert not belly.esta_gruniendo()
 
 
-
 # test gruñe si ha comido mucho y espera
 def test_gruñe_si_come_muchos_y_espera():
     belly = Belly()
@@ -53,13 +52,13 @@ def test_no_permite_demasiados():
 # test para la predicicion de gruñido
 def test_prediccion_gruñido_true():
     belly = Belly()
-    assert belly.predecir_gruñido(20, 2) == True
+    assert belly.predecir_gruñido(20, 2)
 
 
 # test para la prediccion de gruñido con menos pepinos
 def test_prediccion_gruñido_false():
     belly = Belly()
-    assert belly.predecir_gruñido(5, 1.5) == False
+    assert not belly.predecir_gruñido(5, 1.5)
 
 
 # test para la reduccion de pepinos
