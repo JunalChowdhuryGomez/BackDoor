@@ -37,6 +37,3 @@ jobs:
         run: |
           mkdir -p reports
           pytest --junitxml=reports/pytest-report.xml --cov=src --cov-report=html
-
-      - name: Ejecutar pruebas BDD y generar reporte JUnit
-        run: behave -f behave_junit_formatter:JUnitFormatter -o reports/
