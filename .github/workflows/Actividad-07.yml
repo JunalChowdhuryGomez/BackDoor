@@ -42,7 +42,7 @@ jobs:
         run: behave -f junit -o reports/
 
       - name: Subir reporte HTML de cobertura
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: cobertura-html
           path: htmlcov/index.html
